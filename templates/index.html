@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Translation Helper</title>
+</head>
+<body>
+    <h1>Enter text</h1>
+    <form method="post" action="{{ url_for('chatbot')}}">
+        <label for="chinese">Chinese Expression:</label>
+        <input type="text" id="chinese" name="chinese" required>
+        <label for="english">English check:</label>
+        <input type="text" id="english" name="english" required>
+        <button type="submit">Check</button>
+    </form>
+</body>
+</html>
