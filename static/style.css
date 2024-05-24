@@ -34,25 +34,6 @@ html, body, form {
     z-index: 1000;
 }
 
-/* Form input styles */
-input[type="text"] {
-    font-size: 24px;
-    border: none;
-    background-color: transparent;
-    padding: 10px 20px;
-    width: 80%;
-    color: inherit;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    margin: auto;
-}
-.left input[type="text"] {
-    color: #3B413C;
-}
-.right input[type="text"] {
-    color: #BFB5AF;
-}
-
 /* Button styles */
 .submit-container {
     position: absolute;
@@ -74,6 +55,26 @@ input[type="text"] {
 }
 .submit-button:hover {
     background-color: #C0C0C0;
+}
+
+/* Form input styles */
+input[type="text"] {
+    font-size: 24px;
+    border: none;
+    background-color: transparent;
+    padding: 10px 20px;
+    width: 80%;
+    color: inherit;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin: auto;
+}
+
+.left input[type="text"] {
+    color: #3B413C;
+}
+.right input[type="text"] {
+    color: #BFB5AF;
 }
 
 /* Text display styles for results page */
