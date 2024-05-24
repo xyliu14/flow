@@ -1,0 +1,143 @@
+/* Global Styles */
+html, body, form {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+/* Layout for left and right split */
+.split {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+}
+.left {
+    background-color: #BFB5AF;
+}
+.right {
+    background-color: #3B413C;
+}
+
+/* Menu icon positioning */
+.menu-icon {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 1000;
+}
+
+/* Form input styles */
+input[type="text"] {
+    font-size: 24px;
+    border: none;
+    background-color: transparent;
+    padding: 10px 20px;
+    width: 80%;
+    color: inherit;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin: auto;
+}
+.left input[type="text"] {
+    color: #3B413C;
+}
+.right input[type="text"] {
+    color: #BFB5AF;
+}
+
+/* Button styles */
+.submit-container {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.submit-button {
+    background-color: #D9D9D9;
+    color: #000;
+    border-radius: 34px;
+    width: 210px;
+    height: 68px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    line-height: 68px;
+}
+.submit-button:hover {
+    background-color: #C0C0C0;
+}
+
+/* Text display styles for results page */
+.user-input-chinese {
+    color: #3B413C;
+    text-align: center;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.user-input-english {
+    position: absolute;
+    top: 25%;
+    font-size: 32px;
+    font-weight: bold;
+    color: #BFB5AF;
+}
+
+.evaluation {
+    position: absolute;
+    top: 35%;
+    width: 80%;
+}
+
+.evaluation p {
+    font-size: 20px;
+    color: #BFB5AF;
+}
+
+.evaluation p .highlight {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.suggestions {
+    position: absolute;
+    top: 45%;
+    font-size: 20px;
+    width: 80%;
+    color: #BFB5AF;
+}
+
+.suggestions p {
+    margin-bottom: 10px;
+}
+
+.suggestions ul {
+    font-size: 24px;
+    font-weight: bold;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.suggestions li {
+    margin-bottom: 5px;
+    text-align: center;
+    line-height: 48px;
+}

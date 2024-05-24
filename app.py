@@ -9,21 +9,29 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['POST'])
 def home():
     return render_template("index.html")
 
-@app.route("/chatbot", methods=["POST"])
-def chatbot():
+@app.route("/results", methods=["POST"])
+def results():
     user_input_chinese = request.form["chinese"]
     user_input_english = request.form["english"]
-    prompt = f"This is the target expression in Chinese: {user_input_chinese}. This is an English expression for assessment: {user_input_english}. Assess the naturalness of this English expression using a percentage score. If this is less commonly used among native speakers, give three examples to express this idea like a local, and say no more."
-    chat_history = []
+    prompt = f"""This is the Chinese context: {user_input_chinese}. This is an English expression based on the Chinese context to be assessed: {user_input_english}. 
+                Rate the expression from:
+                \"Natural (commonly used by native speakers; only give this rating if a native speaker of English would say this exact expression)\", 
+                \"Understandable (not often used by native speakers but understandable)\", to 
+                \"Questionnable (hard to understand)\". 
+                Return a list with four elements, no explanations, no tags: rating of this expression and three examples of the native equivalent.
+                
+                Example: 
+                Questionable, Affordable price, Budget-friendly price, Reasonable price
+                """
     response = openai.chat.completions.create(
-        model= "gpt-3.5-turbo",
+        model= "gpt-4o",
         messages=[
             {
-                "role": "system", "content": "You are a teacher of English who teaches Chinese students."
+                "role": "system", "content": "You are a teacher of English who teaches Chinese students how to speak like a native speaker."
             },
             {
                 "role": "user", "content": (prompt)
@@ -33,18 +41,19 @@ def chatbot():
         max_tokens=60,
         top_p=1,
         frequency_penalty=0,
-        stop=["\nUser: ", "\nChatbot: "]
     )
 
     bot_response = response.choices[0].message.content
-
-    chat_history.append(f"Chinese: {user_input_chinese}\nEnglish: {user_input_english}\nChatbot: {bot_response}")
+    response_parts = bot_response.split(', ')
 
     return render_template(
-        "chatbot.html",
+        "results.html",
         user_input_chinese=user_input_chinese,
         user_input_english=user_input_english,
-        bot_response=bot_response 
+        evaluation_result=response_parts[0], 
+        expression_1=response_parts[1] if len(response_parts) > 1 else "", 
+        expression_2=response_parts[2] if len(response_parts) > 2 else "",
+        expression_3=response_parts[3] if len(response_parts) > 3 else "" 
     )
 
 if __name__ == '__main__':

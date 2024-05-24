@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Translation Helper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Enter text</h1>
-    <form method="post" action="{{ url_for('chatbot')}}">
-        <label for="chinese">Chinese Expression:</label>
-        <input type="text" id="chinese" name="chinese" required>
-        <label for="english">English check:</label>
-        <input type="text" id="english" name="english" required>
-        <button type="submit">Check</button>
+    <div class="menu-icon">
+        <img src="{{ url_for('static', filename='assets/menu.svg') }}" alt="Menu">
+    </div>
+    <form action="{{ url_for('results') }}" method="POST">
+        <div class="split left">
+            <input type="text" id="chinese" name="chinese" placeholder="写下你想查询的中文单词或情境..." required>
+        </div>
+        <div class="split right">
+            <input type="text" id="english" name="english" placeholder="Type the English equivalent you have in mind..." required>
+        </div>    
+        <div class="submit-container">
+            <button type="submit" class="submit-button">查询</button>
+        </div>
     </form>
 </body>
 </html>

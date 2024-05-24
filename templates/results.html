@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Translation Helper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="menu-icon">
+        <img src="{{ url_for('static', filename='assets/menu.svg') }}" alt="Menu">
+    </div>
+    <div class="split left">
+        <div class="user-input-chinese">"{{ user_input_chinese }}"</div>
+    </div>
+    <div class="split right">
+        <div class="user-input-english">"{{ user_input_english }}"</div>
+        <div class="evaluation">
+            <p>Your expression is <span class="highlight">{{ evaluation_result }}</span> comparing with what a native speaker might say.</p>
+        </div>        
+        <div class="suggestions">
+            <p>You may also want to consider the following expressions:</p>
+            <ul>
+                <li>{{ expression_1 }}</li>
+                <li>{{ expression_2 }}</li>
+                <li>{{ expression_3 }}</li>
+            </ul>
+        </div>
+        <form action="{{ url_for('home') }}" method="POST"> 
+            <div class="submit-container">
+                <button type="submit" class="submit-button">再次查询</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
