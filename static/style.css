@@ -95,7 +95,9 @@ input[type="text"] {
 
 .user-input-english {
     position: absolute;
-    top: 25%;
+    text-align: center;
+    width: 80%;
+    top: 20%;
     font-size: 32px;
     font-weight: bold;
     color: #BFB5AF;
